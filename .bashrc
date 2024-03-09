@@ -145,14 +145,14 @@ fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/aweaver/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/$HOME/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/aweaver/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/aweaver/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/$HOME/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/aweaver/miniconda3/bin:$PATH"
+        export PATH="/$HOME/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -162,14 +162,9 @@ unset __conda_setup
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-. "$HOME/.cargo/env"
 
-alias trunkfc='trunk fmt && trunk check'
-alias trunkf='trunk fmt'
-alias trunkc='trunk check'
-alias trunkt='trunk test'
-alias trunkb='trunk build'
-alias trunkr='trunk run'
+# Check if $HOME/.cargo/env exists, and if so, source it
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
 # function to make git commits easier
 function g() {
@@ -190,9 +185,19 @@ function branch() {
 export PATH="/usr/local/nvim-linux64/bin:$PATH"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# pyenv
+# First ensure that pyenv is installed and in the PATH, otherwise skip
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init --path)"
+fi
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH=$PYENV_ROOT/bin:/home/aweaver/.pyenv/shims:/home/aweaver/.pyenv/bin:/usr/local/nvim-linux64/bin:/home/aweaver/.pyenv/bin:/home/aweaver/.npm-global/bin:/home/aweaver/.local/bin:/usr/local/nvim-linux64/bin:/home/aweaver/.cargo/bin:/home/aweaver/.nvm/versions/node/v20.6.1/bin:/home/aweaver/miniconda3/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/:/usr/bin:/bin
+export PATH=$PYENV_ROOT/bin:/$PYENV_ROOT/shims:/$PYENV_ROOT/bin:/usr/local/nvim-linux64/bin:/$PYENV_ROOT/bin:/$HOME/.npm-global/bin:/$HOME/.local/bin:/usr/local/nvim-linux64/bin:/$HOME/.cargo/bin:/$HOME/.nvm/versions/node/v20.6.1/bin:/$HOME/miniconda3/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/:/usr/bin:/bin
 if command -v pyenv 1>/dev/null 2>&1; then
  eval "$(pyenv init -)"
 fi
-eval "$(pyenv virtualenv-init -)"
+
+# set up pyenv-virtualenv if installed
+if command -v pyenv-virtualenv-init 1>/dev/null 2>&1; then
+  eval "$(pyenv virtualenv-init -)"
+fi
