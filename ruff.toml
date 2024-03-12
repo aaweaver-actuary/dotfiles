@@ -1,0 +1,103 @@
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".env",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "env",
+    "node_modules",
+    "site-packages",
+    "venv",
+]
+
+# Same as Black.
+line-length = 88
+indent-width = 4
+
+# Assume Python 3.8
+target-version = "py38"
+fixable = ["ALL"]
+fix = true
+extend-include = ["*.ipynb"]
+
+[format]
+docstring-code-format = true # Enable reformatting of code snippets in docstrings.
+docstring-code-line-length = 75 # Format all docstring code snippets with a line length of 75
+skip-magic-trailing-comma = true 
+
+[lint]
+dummy-variable-rgx = "^_$" # Only ignore variables named "_"
+
+# On top of the default `select` (`E`, `F`), enable:
+# flake8-bugbear (`B`)
+# flake8-quotes (`Q`)
+
+extend-select = ["B", "Q"] 
+extend-fixable = ["B"] # Enable fix for flake8-bugbear (`B`), on top of any rules specified by `fixable`.
+fixable = ["ALL"]
+unfixable = ["F401"] # Disable fix for unused imports (`F401`).
+
+
+[lint.per-file-ignores]
+"__init__.py" = ["E402"]
+"**/{tests,docs,tools}/*" = ["E402"]
+
+[lint.extend-per-file-ignores]
+# Ignore `E402` and `F401` in all `__init__.py` files.
+"__init__.py" = ["E402", "F401"]
+"**/{tests,docs,tools}/*" = ["E402", "F401"]
+
+[lint.flake8-annotations]
+mypy-init-return = true
+mypy-no-implicit-optional = true
+
+[lint.flake8-import-conventions]
+# Declare the banned `from` imports. These may be imported using `import`, but not `from`.
+# So "from pandas import DataFrame" is banned, but "import pandas as pd" is allowed.
+banned-from = ["pandas", "numpy", "matplotlib", "polars", "polars.selectors", "plotly.express", "plotly.graph_objects"]
+
+[lint.flake8-import-conventions.extend-aliases]
+"polars" = "pl" # Allow "pl" as an alias for "polars"
+"polars.selectors" = "cs" # Allow "cs" as an alias for "polars.selectors" -- this follows API conventions in Polars
+"plotly.express" = "px" # Allow "px" as an alias for "plotly.express"
+"plotly.graph_objects" = "go" # Allow "go" as an alias for "plotly.graph_objects"
+
+[lint.flake8-pytest-style]
+# @pytest.fixture functions should not have parentheses in their names
+# (e.g. `@pytest.fixture()` is not allowed).
+fixture-parentheses = false 
+
+# @pytest.mark.parametrize parameter names should be a comma-separated list
+# (e.g. `@pytest.mark.parametrize("a, b", [(1, 2), (3, 4)])` is allowed, but
+# `@pytest.mark.parametrize("a b", [(1, 2), (3, 4)])` is not).
+parametrize-names-type = "csv"
+
+[lint.pydocstyle]
+convention = "numpy" # Use the numpy docstring convention
+
+[lint.pylint]
+max-args = 10 # Maximum number of arguments for functions and methods
+
+
+
+
+
