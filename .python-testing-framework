@@ -1,0 +1,3 @@
+#!/bin/bash
+
+pip install pytest coverage pytest-cov mypy ruff ruff-lsp flake8 pytest-flake8
