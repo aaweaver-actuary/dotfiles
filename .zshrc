@@ -104,6 +104,8 @@ export MANPATH="/usr/local/man:$MANPATH"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 setopt autocd
+setopt autolist
+setopt interactivecomments
 
 # Source the aliases file if it exists
 [ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
