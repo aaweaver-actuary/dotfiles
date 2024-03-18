@@ -11,3 +11,9 @@ function upgrade(){
 	sudo apt autoremove -y
 	sudo apt autoclean -y
 }
+
+function gacp() {
+	git add .
+	git commit -m $1
+	git push
+}

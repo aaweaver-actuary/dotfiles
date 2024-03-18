@@ -1,5 +1,13 @@
 # start with basic PATH
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib
+export PATH=/usr/local/sbin
+export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:/usr/sbin
+export PATH=$PATH:/usr/bin
+export PATH=$PATH:/sbin
+export PATH=$PATH:/bin
+export PATH=$PATH:/usr/games
+export PATH=$PATH:/usr/local/games
+export PATH=$PATH:/usr/lib/wsl/lib
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
