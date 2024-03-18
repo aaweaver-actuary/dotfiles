@@ -35,10 +35,10 @@ chmod +x $save_path
 tar -x${tar_hydrate_flag}f $save_path
 
 # Move folder /usr/bin/
-sudo mv ${HOME}/${nvim_folder} $move_path
+sudo mv ${HOME}/${nvim_folder} $move_path || mv ${HOME}/${nvim_folder} $move_path
 
 # Link binary to /usr/bin/nvim
-sudo ln -s "${move_path}/bin/nvim" "/usr/bin/nvim"
+sudo ln -s "${move_path}/bin/nvim" "/usr/bin/nvim" || ln -s "${move_path}/bin/nvim" "/usr/bin/nvim"
 
 # Test nvim
 nvim --version
