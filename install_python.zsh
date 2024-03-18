@@ -18,7 +18,7 @@ rm $pyenv_binary_path || true
 sudo apt install -y bash zsh sudo \
 || sudo apk add --no-cache --no-check-certificate bash zsh sudo \
 || apt install -y bash zsh sudo \
-|| apk add --no-cache --no-check-certificate bash zsh sudo
+|| apk add --no-cache --no-check-certificate bash zsh sudo \
 || { echo "install - loc0 - Failed to install bash and/or z shell. Exiting."; exit 1; }
 
 # Install the specified version of Python and the required packages
