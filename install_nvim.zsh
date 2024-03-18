@@ -63,7 +63,8 @@ node --version
 # Run the install_python.zsh script
 cd $dotfiles_folder
 sudo chmod +x install_python.zsh
-./install_python.zsh pynvim
+./install_python.zsh pynvim \
+|| source ./install_python.zsh pynvim
 
 # Delete dotfiles folder
 rm -rf $dotfiles_folder
