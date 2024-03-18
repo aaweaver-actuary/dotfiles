@@ -19,13 +19,13 @@ config_folder="${HOME}/.config/${binary_name}"
 dotfiles_folder="${HOME}/dotfiles"
 
 # Remove any previous nvim files
-rm -rf $extract_folder || true
-rm -rf $move_path || true
-rm $save_path || true
-rm $binary_path || true
-rm ${HOME}/${nvim_filename} || true
-rm -rf $dotfiles_folder || true
-rm -rf $config_folder || true
+[ -d $extract_folder ] && rm -rf $extract_folder
+[ -d $move_path ] && rm -rf $move_path
+[ -f $save_path ] && rm $save_path
+[ -f $binary_path ] && rm $binary_path
+[ -d $dotfiles_folder ] && rm -rf $dotfiles_folder
+[ -d $config_folder ] && rm -rf $config_folder
+[ -d $HOME/$nvim_filename ] || rm $HOME/$nvim_filename
 
 # Download with curl
 curl -k -L $nvim_url -o $save_path
