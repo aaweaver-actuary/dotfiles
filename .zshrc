@@ -8,6 +8,7 @@ export PATH=$PATH:/bin
 export PATH=$PATH:/usr/games
 export PATH=$PATH:/usr/local/games
 export PATH=$PATH:/usr/lib/wsl/lib
+export PATH=$PATH:/mnt/c/
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
