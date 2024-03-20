@@ -35,7 +35,7 @@ export ZSH="$HOME/.oh-my-zsh"
 #   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k --quiet
 # fi;
 
-ZSH_THEME="powerlevel10k/powerlevel10k" # set by `omz`
+ZSH_THEME="half-life"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
