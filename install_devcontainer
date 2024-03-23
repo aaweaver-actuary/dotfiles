@@ -4,7 +4,10 @@ DESTINATION_FOLDER=$1
 CONTAINER_ARG=$2
 CONTAINER="none"
 
+SCRIPT_USAGE="Usage: install_devcontainer <destination_folder> <container_type>"
+
 if [ -z $CONTAINER_ARG ]; then
+    echo $SCRIPT_USAGE
     echo "Please provide both a destination folder and a container type"
     exit 1
 fi
