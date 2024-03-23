@@ -1,0 +1,65 @@
+#! /usr/bin/env zsh
+
+CONTAINER_ARG=$1
+CONTAINER="none"
+
+if [ -z $CONTAINER_ARG ]; then
+    echo "Please provide a container name"
+    exit 1
+fi
+
+if [ $CONTAINER_ARG = "python"] || \
+[ $CONTAINER_ARG = "py"] || \
+[ $CONTAINER_ARG = "Python"] || \
+[ $CONTAINER_ARG = "PYTHON"] || \
+[ $CONTAINER_ARG = "PY"]; then
+    CONTAINER="python"
+fi
+
+if [ $CONTAINER="none" ]; then
+    if [ $CONTAINER_ARG = "rust"] || \
+    [ $CONTAINER_ARG = "Rust"] || \
+    [ $CONTAINER_ARG = "RUST"] || \
+    [ $CONTAINER_ARG = "rs"] || \
+    [ $CONTAINER_ARG = "RS"]; then
+        CONTAINER="rust"
+    fi
+fi
+
+if [ $CONTAINER="none" ]; then
+    if [ $CONTAINER_ARG = "go"] || \
+    [ $CONTAINER_ARG = "golang"] || \
+    [ $CONTAINER_ARG = "GO"] || \
+    [ $CONTAINER_ARG = "Go"] || \
+    [ $CONTAINER_ARG = "GOLANG"]; then
+        CONTAINER="golang"
+    fi
+fi
+
+
+if [ $CONTAINER="none" ]; then
+    echo "Container not found"
+    echo "Please choose one of: python, rust, golang"
+    exit 1
+fi
+
+CLONED_FOLDER=./devcontainers/$CONTAINER/.devcontainer
+NEW_FOLDER=./.devcontainer
+GITHUB_REPO="http://github.com/aaweaver-actuary/devcontainers"
+
+# Clone the repo
+git clone $GITHUB_REPO --quiet
+
+# Copy the devcontainer.json file and the compose.yml file from the
+# cloned devcontainer folder to a new .devcontainer folder in the current directory
+cp -r $CLONED_FOLDER $NEW_FOLDER
+
+# Remove the cloned folder
+rm -rf devcontainers
+
+# Remove everything except the devcontainer.json and the compose.yml file
+for file in $NEW_FOLDER/*; do
+    if [ $file != "$NEW_FOLDER/devcontainer.json" ] && [ $file != "$NEW_FOLDER/docker-compose.yml" ]; then
+        rm -rf $file
+    fi
+done
