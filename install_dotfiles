@@ -38,7 +38,9 @@ for file_name in "$@"; do
         # Move or copy the file to the target directory
         # Using 'mv' for moving; replace with 'cp' to copy instead
         mv "$file_name" "$TARGET_DIRECTORY/$file_name" || { echo "Failed to move '$file_name'. Skipping."; continue; }
+        chmod +x "$TARGET_DIRECTORY/$file_name" || True
         echo "Installed '$file_name' at '$TARGET_DIRECTORY/$file_name'"
+
     fi
 done
 
