@@ -7,29 +7,29 @@ CONTAINER="none"
 SCRIPT_USAGE="Usage: install_devcontainer <destination_folder> <container_type>"
 
 if [ -z $CONTAINER_ARG ]; then
-    echo $SCRIPT_USAGE
+    echo "$SCRIPT_USAGE"
     echo "Please provide both a destination folder and a container type"
     exit 1
 fi
 
-if [ $CONTAINER_ARG = "python"] || [ $CONTAINER_ARG = "py"] || [ $CONTAINER_ARG = "Python"] ||  [ $CONTAINER_ARG = "PYTHON"] ||  [ $CONTAINER_ARG = "PY"]; then
+if [ "$CONTAINER_ARG" = "python" ] || [ "$CONTAINER_ARG" = "py" ] || [ "$CONTAINER_ARG" = "Python" ] ||  [ "$CONTAINER_ARG" = "PYTHON" ] ||  [ "$CONTAINER_ARG" = "PY" ]; then
     CONTAINER="python"
 fi
 
-if [ $CONTAINER="none" ]; then 
-    if [ $CONTAINER_ARG = "rust"] ||  [ $CONTAINER_ARG = "Rust"] ||  [ $CONTAINER_ARG = "RUST"] ||  [ $CONTAINER_ARG = "rs"] || [ $CONTAINER_ARG = "RS"]; then
+if [ "$CONTAINER"="none" ]; then 
+    if [ "$CONTAINER_ARG" = "rust" ] ||  [ "$CONTAINER_ARG" = "Rust" ] ||  [ "$CONTAINER_ARG" = "RUST" ] ||  [ "$CONTAINER_ARG" = "rs" ] || [ "$CONTAINER_ARG" = "RS" ]; then
         CONTAINER="rust"
     fi
 fi
 
-if [ $CONTAINER="none" ]; then 
-    if [ $CONTAINER_ARG = "go"] || [ $CONTAINER_ARG = "golang"] || [ $CONTAINER_ARG = "GO"] || [ $CONTAINER_ARG = "Go"] || [ $CONTAINER_ARG = "GOLANG"]; then
+if [ "$CONTAINER"="none" ]; then 
+    if [ "$CONTAINER_ARG" = "go" ] || [ "$CONTAINER_ARG" = "golang" ] || [ "$CONTAINER_ARG" = "GO" ] || [ "$CONTAINER_ARG" = "Go" ] || [ "$CONTAINER_ARG" = "GOLANG" ]; then
         CONTAINER="golang"
     fi
 fi
 
 
-if [ $CONTAINER="none" ]; then
+if [ "$CONTAINER"="none" ]; then
     echo "Container not found"
     echo "Please choose one of: python, rust, golang"
     exit 1
