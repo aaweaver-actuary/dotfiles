@@ -18,9 +18,6 @@ fi
 (curl -k -fsSL $OHMYZSH_URL | zsh) \
     || { echo "Failed to install oh-my-zsh. Exiting."; exit 1; }
 
-# Set the default shell to zsh
-chsh -s $(which zsh) || { echo "Failed to set default shell to zsh. Exiting."; exit 1; }
-
 # Install .zshrc and .zsh_aliases
 chmod +x ./install_dotfiles.zsh
 ./install_dotfiles.zsh $HOME .zshrc .zsh_aliases
