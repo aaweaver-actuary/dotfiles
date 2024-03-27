@@ -35,9 +35,8 @@ cd $REPO_DIR || { echo "Failed to change directory. Exiting."; exit 1; }
 for file_name in "$@"; do
     # Check if the file exists in the root of the cloned repo
     if [[ -f $file_name ]]; then
-        # Move or copy the file to the target directory
-        # Using 'mv' for moving; replace with 'cp' to copy instead
-        mv "$file_name" "$TARGET_DIRECTORY/$file_name" || { echo "Failed to move '$file_name'. Skipping."; continue; }
+        # Copy the file to the target directory
+        cp "$file_name" "$TARGET_DIRECTORY/$file_name" || { echo "Failed to move '$file_name'. Skipping."; continue; }
         chmod +x "$TARGET_DIRECTORY/$file_name" || True
         echo "Installed '$file_name' at '$TARGET_DIRECTORY/$file_name'"
 
