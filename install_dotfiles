@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # Ensure the script is executed with at least two arguments
 if (( $# < 2 )); then
@@ -44,5 +44,8 @@ for file_name in "$@"; do
 done
 
 # Move up one level and remove the dotfiles repo
-cd .. || { echo "Failed to change directory. Exiting."; exit 1; }
-rm -rf $REPO_DIR
+cd ../ || { echo "Failed to change directory. Exiting."; exit 1; }
+
+rm -rf $REPO_DIR || { echo "Failed to remove repo. Exiting."; exit 1; }
+
+exit 0
