@@ -1,2 +1,10 @@
-core.autocrlf input
-http.sslVerify false
+[user]
+    name = Andy Weaver
+    email = andrewayersweaver@gmail.com
+
+[core]
+    editor = nano
+    autocrlf = input
+
+[http]
+    sslVerify = false
