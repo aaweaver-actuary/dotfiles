@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/bin/bash
 
 # Ensure the script is executed with at least two arguments
 if (( $# < 2 )); then
