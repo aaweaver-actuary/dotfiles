@@ -1,4 +1,4 @@
-#! /bin/zsh 
+#!/usr/bin/env zsh
 
 node_version="20.11.1"
 node_folder="node-v${node_version}-linux-x64"
@@ -26,7 +26,6 @@ sudo apt install -y sudo \
 sudo mv $save_path $move_path \
 || mv $save_path $move_path \
 || { echo "install - loc1 - Failed to move the folder to /usr/bin. Exiting."; exit 1; }
-
 
 # Link binary to /usr/bin/node
 sudo ln -s "${move_path}/bin/node" "/usr/bin/node" \

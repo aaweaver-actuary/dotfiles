@@ -1,4 +1,4 @@
-#! /bin/zsh
+#!/usr/bin/env zsh
 
 binary_name="nvim"
 binary_path="/usr/bin/${binary_name}"
