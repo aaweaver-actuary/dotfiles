@@ -1,4 +1,15 @@
+<<<<<<< HEAD
 # # start with basic PATH
+=======
+# Add local bin folder if needed
+if [ ! -d $HOME/bin ]
+then
+  mkdir -p $HOME/bin/
+  chmod 777 $HOME/bin/
+fi
+
+# Add the folder to the PATH
+>>>>>>> 0bb8bac (maybe this actually does it?)
 export PATH=$PATH:$HOME/bin
 
 # If you come from bash you might have to change your $PATH.
