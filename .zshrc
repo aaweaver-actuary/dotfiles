@@ -1,14 +1,5 @@
 # # start with basic PATH
-# export PATH=/usr/local/sbin
-# export PATH=$PATH:/usr/local/bin
-# export PATH=$PATH:/usr/sbin
-# export PATH=$PATH:/usr/bin
-# export PATH=$PATH:/sbin
-# export PATH=$PATH:/bin
-# export PATH=$PATH:/usr/games
-# export PATH=$PATH:/usr/local/games
-# export PATH=$PATH:/usr/lib/wsl/lib
-# export PATH=$PATH:/mnt/c/
+export PATH=$PATH:$HOME/bin
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -132,7 +123,7 @@ setopt interactivecomments
 
 #use extended color palette if available
 if [[ $TERM = (*256color|*rxvt*) ]]; then
-  turquoise="%{${(%):-"%F{81}"}%}"
+  cyan="%{${(%):-"%F{81}"}%}"
   orange="%{${(%):-"%F{166}"}%}"
   purple="%{${(%):-"%F{135}"}%}"
   hotpink="%{${(%):-"%F{161}"}%}"
@@ -140,7 +131,7 @@ if [[ $TERM = (*256color|*rxvt*) ]]; then
   blue="%{${(%):-"%F{blue}"}%}"
   yellow="%{${(%):-"%F{yellow}"}%}"
 else
-  turquoise="%{${(%):-"%F{cyan}"}%}"
+  cyan="%{${(%):-"%F{cyan}"}%}"
   orange="%{${(%):-"%F{yellow}"}%}"
   purple="%{${(%):-"%F{magenta}"}%}"
   hotpink="%{${(%):-"%F{red}"}%}"
@@ -165,7 +156,7 @@ zstyle ':vcs_info:*:prompt:*' check-for-changes true
 # %R - repository path
 # %S - path in the repository
 PR_RST="%{${reset_color}%}"
-FMT_BRANCH=" on ${turquoise}%b%u%c${PR_RST}"
+FMT_BRANCH=" on ${hotpink}%b%u%c${PR_RST}"
 FMT_ACTION=" performing a ${limegreen}%a${PR_RST}"
 FMT_UNSTAGED="${orange} ●"
 FMT_STAGED="${limegreen} ●"
@@ -193,9 +184,9 @@ function steeef_precmd {
   # check for untracked files or updated submodules, since vcs_info doesn't
   if [[ -n "$(git ls-files --other --exclude-standard 2>/dev/null)" ]]; then
     PR_GIT_UPDATE=1
-    FMT_BRANCH="${PM_RST} on ${turquoise}%b%u%c${hotpink} ●${PR_RST}"
+    FMT_BRANCH="${PM_RST} on ${cyan}%b%u%c${hotpink} ●${PR_RST}"
   else
-    FMT_BRANCH="${PM_RST} on ${turquoise}%b%u%c${PR_RST}"
+    FMT_BRANCH="${PM_RST} on ${cyan}%b%u%c${PR_RST}"
   fi
   zstyle ':vcs_info:*:prompt:*' formats       "${FMT_BRANCH}"
 
@@ -221,4 +212,4 @@ ZSH_THEME_VIRTUALENV_PREFIX=" with%F{red} "
 ZSH_THEME_VIRTUALENV_SUFFIX="%{$reset_color%}"
 
 setopt prompt_subst
-PROMPT="[${purple}%n%{$reset_color%}@${blue}%M%{$reset_color%}][${limegreen}%~%{$reset_color%}]\$(virtualenv_prompt_info)\$(ruby_prompt_info)\$vcs_info_msg_0_${orange} λ%{$reset_color%} "
+PROMPT="[${purple}%n%{$reset_color%}@${cyan}%M%{$reset_color%}][${limegreen}%~%{$reset_color%}]\$(virtualenv_prompt_info)\$(ruby_prompt_info)\$vcs_info_msg_0_${orange} λ%{$reset_color%} "
