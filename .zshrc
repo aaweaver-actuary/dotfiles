@@ -14,14 +14,14 @@ then
     # Cargo
     if [ -d $HOME/hd-bin/.cargo ]
     then
-      export CARGO_HOME=$HOME/hd-bin/.cargo
-      export PATH=$CARGO_HOME/bin:$PATH
+      echo "export CARGO_HOME=$HOME/hd-bin/.cargo" >> /etc/environment
+      echo "export PATH=$CARGO_HOME/bin:$PATH" >> /etc/environment
     fi
 
     # Rustup
     if [ -d $HOME/hd-bin/.rustup ]
     then
-      export RUSTUP_HOME=$HOME/hd-bin/.rustup
+      echoo "export RUSTUP_HOME=$HOME/hd-bin/.rustup" >> /etc/environment
     fi
 fi
 
