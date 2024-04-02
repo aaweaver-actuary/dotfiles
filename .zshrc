@@ -8,6 +8,24 @@ fi
 # Add the folder to the PATH
 export PATH=$PATH:$HOME/bin
 
+# Rust configuration variables
+if [ -d $HOME/hd-bin ]
+then
+    # Cargo
+    if [ -d $HOME/hd-bin/.cargo ]
+    then
+      export CARGO_HOME=$HOME/hd-bin/.cargo
+      export PATH=$CARGO_HOME/bin:$PATH
+    fi
+
+    # Rustup
+    if [ -d $HOME/hd-bin/.rustup ]
+    then
+      export RUSTUP_HOME=$HOME/hd-bin/.rustup
+    fi
+fi
+
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
