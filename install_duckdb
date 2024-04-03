@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+DUCKDB_VERSION="0.10.1"
+DUCKDB_OS="linux"
+DUCKDB_ARCH="amd64"
+URL="https://github.com/duckdb/duckdb/releases/download/v${DUCKDB_VERSION}/duckdb_cli-${DUCKDB_OS}-${DUCKDB_ARCH}.zip"
+
+# Download and unzip
+curl -k -L -o duckdb.zip $URL
+unzip duckdb.zip
