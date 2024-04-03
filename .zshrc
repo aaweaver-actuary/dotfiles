@@ -225,3 +225,13 @@ PROMPT="[${purple}%n%{$reset_color%}@${cyan}%M%{$reset_color%}][${limegreen}%~%{
 export SNOWSQL_ORG="zqvxwkp"
 export SNOWSQL_ACCOUNT="${SNOWSQL_ORG}-hj56993"
 export SNOWSQL_USER="andyweaver"
+
+# == SOURCE PASSWORD FILE IF IT EXISTS ============================
+if [ -f ~/.passwords ]; then
+  source ~/.passwords
+else
+  echo "No password file found - to set up passwords, create a file at ~/.passwords with the following format:"
+  echo "export SNOWSQL_PWD=\"yourpassword\""
+  echo "export GITHUB_TOKEN=\"yourtoken\""
+  echo "etc"
+fi
