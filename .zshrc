@@ -235,3 +235,7 @@ else
   echo "export GITHUB_TOKEN=\"yourtoken\""
   echo "etc"
 fi
+
+# == UTF ENCODING ENVIRONMENT VARIABLES ============================
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
