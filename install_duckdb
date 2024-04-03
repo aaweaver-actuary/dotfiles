@@ -5,6 +5,16 @@ DUCKDB_OS="linux"
 DUCKDB_ARCH="amd64"
 URL="https://github.com/duckdb/duckdb/releases/download/v${DUCKDB_VERSION}/duckdb_cli-${DUCKDB_OS}-${DUCKDB_ARCH}.zip"
 
-# Download and unzip
+# Download and unzip to ~/bin
 curl -k -L -o duckdb.zip $URL
-unzip duckdb.zip
+mkdir -p ~/bin
+unzip duckdb.zip -d ~/bin
+
+# Clean up
+rm duckdb.zip
+
+# Add to PATH if not already there
+if [[ ! ":$PATH:" == *":$HOME/bin:"* ]]; then
+  echo 'export PATH="$HOME/bin:$PATH"' >> ~/.zshrc
+  source ~/.zshrc
+fi
