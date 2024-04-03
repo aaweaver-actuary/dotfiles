@@ -1,4 +1,4 @@
-#! /bin/env zsh
+#!/usr/bin/env zsh
 
 OHMYZSH_URL="https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
 
@@ -18,9 +18,14 @@ fi
 (curl -k -fsSL $OHMYZSH_URL | zsh) \
     || { echo "Failed to install oh-my-zsh. Exiting."; exit 1; }
 
-# Install .zshrc and .zsh_aliases
-chmod +x ./install_dotfiles.zsh
-./install_dotfiles.zsh $HOME .zshrc .zsh_aliases
+# Install .zshrc and .zsh_aliases if have the install_dotfiles command
+if ! command -v install_dotfiles &> /dev/null; then
+    git clone http.sslVerify=false http://github.com/aaweaver-actuary/dotfiles
+    cp ./dotfiles/install_dotfiles /usr/bin/install_dotfiles
+    rm -rf ./dotfiles
+fi
+chmod +x /usr/bin/install_dotfiles
+install_dotfiles ~ .zshrc .zsh_aliases
 
 # Reload the shell
 exec zsh
