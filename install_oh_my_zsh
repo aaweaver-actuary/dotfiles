@@ -2,6 +2,12 @@
 
 OHMYZSH_URL="https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
 
+# Remove any existing oh-my-zsh installation
+if [ -d "$HOME/.oh-my-zsh" ]; then
+    echo "Removing existing oh-my-zsh installation..."
+    rm -rf $HOME/.oh-my-zsh
+fi
+
 # Check if curl is installed
 if ! command -v curl &> /dev/null; then
     echo "curl is not installed. Please install curl and try again."
