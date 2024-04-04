@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+
+RELEASE_VERSION="2024-04-01"
+RELEASE_ARCH="aarch64-unknown-linux-gnu"
+RELEASE_FILENAME="rust-analyzer-${RELEASE_ARCH}"
+RELEASE_EXT=".gz"
+RELEASE_BINARY_URL="https://github.com/rust-lang/rust-analyzer/releases/download/${RELEASE_VERSION}/${RELEASE_FILENAME}${RELEASE_EXT}"
+
+# Download binary 
+curl -k -Lo ~/${RELEASE_FILENAME}${RELEASE_EXT} $RELEASE_BINARY_URL
+
+# Extract binary 
+chmod +x ~/${RELEASE_FILENAME}${RELEASE_EXT}
+gzip -d ~/${RELEASE_FILENAME}${RELEASE_EXT}
+
+# Move binary to $HOME/bin
+mkdir -p ~/bin 
+mv ~/${RELEASE_FILENAME} ~/bin/${RELEASE_FILENAME}
+
+# Make a link
+ln ~/bin/${RELEASE_FILENAME} ~/bin/rust-analyzer
+chmod +x ~/bin/rust-analyzer
+chmod -x ~/bin/${RELEASE_FILENAME}
