@@ -184,7 +184,7 @@ LAST_COMMAND_STATUS="%(?.${CHECKMARK}.${CROSSMARK})"
 PROMPT="${NEWLINE}"
 # PROMPT+="╭%K{$PURPLE_CD}%F{$BLACK_CD}${PL_RIGHT_FADE_DIVIDER}%f${SPACE}%n${SPACE}%k%K{$BLUE_CD}%F{$PURPLE_CD}${PL_RIGHT_HARD_DIVIDER}%f"  #------------- user
 # PROMPT+="╭%K{91}%F{0}${PL_RIGHT_HARD_DIVIDER}%f%n%k%F{91}${PL_RIGHT_HARD_DIVIDER}%f"  #------------- user
-PROMPT+="╭${SPACE}${LAST_COMMAND_STATUS}${SPACE}${purple}%n%{$reset_color%}${SPACE}"  #------------- user
+PROMPT+="╭─${LAST_COMMAND_STATUS}${SPACE}${purple}%n%{$reset_color%}${SPACE}"  #------------- user
 # PROMPT+="${SPACE}%M${SPACE}%k%K{$GREEN_CD}%F{$BLUE_CD}${PL_RIGHT_HARD_DIVIDER}%f" #---------------- host
 PROMPT+="@${SPACE}${cyan}%M%{$reset_color%}${SPACE}" #---------------- host
 # PROMPT+="${SPACE}%~%k%F{$GREEN_CD}${PL_RIGHT_HARD_DIVIDER}%f" #----------- current directory
@@ -193,7 +193,7 @@ PROMPT+="\$(virtualenv_prompt_info)" #----------------- virtualenv
 PROMPT+="\$(ruby_prompt_info)" #----------------------- ruby
 PROMPT+="\$vcs_info_msg_0_" #-------------------------- git/svn
 PROMPT+="%{$reset_color%}${NEWLINE}" #----------------- newline
-PROMPT+="╰%F{208} $%f " #-------------- prompt
+PROMPT+="╰─%F{208}$%f " #-------------- prompt
 # PROMPT+="╰${orange} λ%{$reset_color%} " #-------------- prompt
 
 
