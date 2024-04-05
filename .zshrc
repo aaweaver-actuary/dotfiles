@@ -183,3 +183,4 @@ source "$RYE_HOME/env"
 
 # == ALIASES =======================================================
 alias clone_dotfiles="git clone http://github.com/aaweaver-actuary/dotfiles"
+alias reload_zsh="install_dotfiles ~ .zshrc && exec zsh"
