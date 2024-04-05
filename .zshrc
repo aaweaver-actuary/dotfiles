@@ -168,7 +168,8 @@ ZSH_THEME_VIRTUALENV_SUFFIX="%{$reset_color%}"
 setopt prompt_subst
 NEWLINE=$'\n'
 PROMPT="${NEWLINE}"
-PROMPT+="╭%K{91}%F{0}${PL_RIGHT_HARD_DIVIDER}%f%n%k%F{91}${PL_RIGHT_HARD_DIVIDER}%f"  #------------- user
+PROMPT+="╭%K{91}%n%k%F{91}${PL_RIGHT_HARD_DIVIDER}%f"  #------------- user
+# PROMPT+="╭%K{91}%F{0}${PL_RIGHT_HARD_DIVIDER}%f%n%k%F{91}${PL_RIGHT_HARD_DIVIDER}%f"  #------------- user
 # PROMPT+="╭[${purple}%n%{$reset_color%}"  #------------- user
 PROMPT+="%F{255}%K{255}${PL_RIGHT_SOFT_DIVIDER}%k%f" #---------- divider
 PROMPT+="@${cyan}%M%{$reset_color%}]" #---------------- host
