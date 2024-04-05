@@ -171,7 +171,7 @@ ZSH_THEME_VIRTUALENV_SUFFIX="%{$reset_color%}"
 
 setopt prompt_subst
 BLACK_CD=0
-PURPLE_CD=91
+PURPLE_CD=128
 BLUE_CD=51
 GREEN_CD=47
 
