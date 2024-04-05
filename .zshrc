@@ -177,12 +177,16 @@ GREEN_CD=47
 
 NEWLINE=$'\n'
 SPACE=" "
+CHECKMARK="✅"
+CROSSMARK="❌"
+LAST_COMMAND_STATUS="%(?.$CHECKMARK.$CROSSMARK)"
+
 PROMPT="${NEWLINE}"
 # PROMPT+="╭%K{$PURPLE_CD}%F{$BLACK_CD}${PL_RIGHT_FADE_DIVIDER}%f${SPACE}%n${SPACE}%k%K{$BLUE_CD}%F{$PURPLE_CD}${PL_RIGHT_HARD_DIVIDER}%f"  #------------- user
 # PROMPT+="╭%K{91}%F{0}${PL_RIGHT_HARD_DIVIDER}%f%n%k%F{91}${PL_RIGHT_HARD_DIVIDER}%f"  #------------- user
-PROMPT+="╭${SPACE}${purple}%n%{$reset_color%}"  #------------- user
+PROMPT+="╭${SPACE}${LAST_COMMAND_STATUS${SPACE}${purple}%n%{$reset_color%}"  #------------- user
 # PROMPT+="${SPACE}%M${SPACE}%k%K{$GREEN_CD}%F{$BLUE_CD}${PL_RIGHT_HARD_DIVIDER}%f" #---------------- host
-PROMPT+="${SPACE}@${SPACE}${cyan}%M%{$reset_color%}${SPACE}" #---------------- host
+PROMPT+="${SPACE}📁${SPACE}${cyan}%M%{$reset_color%}${SPACE}" #---------------- host
 # PROMPT+="${SPACE}%~%k%F{$GREEN_CD}${PL_RIGHT_HARD_DIVIDER}%f" #----------- current directory
 PROMPT+="${limegreen}%~%{$reset_color%}${SPACE}" #----------- current directory
 PROMPT+="\$(virtualenv_prompt_info)" #----------------- virtualenv
@@ -192,6 +196,8 @@ PROMPT+="%{$reset_color%}${NEWLINE}" #----------------- newline
 PROMPT+="╰%F{208} $%f " #-------------- prompt
 # PROMPT+="╰${orange} λ%{$reset_color%} " #-------------- prompt
 
+
+CLOCK="🕟"
 # RPROMPT="%(?.%K{154}%?.%K{197}%?) %D%t%k"
 
 # == SNOWFLAKE CONFIGURATION =====================================
