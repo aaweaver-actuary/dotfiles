@@ -173,11 +173,10 @@ setopt prompt_subst
 NEWLINE=$'\n'
 SPACE=" "
 PROMPT="${NEWLINE}"
-PROMPT+="╭%K{91}%F{0}${PL_RIGHT_FADE_DIVIDER}%f${SPACE}%n${SPACE}%k%F{91}${PL_RIGHT_HARD_DIVIDER}%f"  #------------- user
+PROMPT+="╭%K{91}%F{0}${PL_RIGHT_HARD_DIVIDER}%f${SPACE}%n${SPACE}%k%F{91}${PL_RIGHT_HARD_DIVIDER}%f"  #------------- user
 # PROMPT+="╭%K{91}%F{0}${PL_RIGHT_HARD_DIVIDER}%f%n%k%F{91}${PL_RIGHT_HARD_DIVIDER}%f"  #------------- user
 # PROMPT+="╭[${purple}%n%{$reset_color%}"  #------------- user
-PROMPT+="%F{255}${PL_RIGHT_SOFT_DIVIDER}%f" #---------- divider
-PROMPT+="@${cyan}%M%{$reset_color%}]" #---------------- host
+PROMPT+="%K{51}%F{91}${PL_RIGHT_HARD_DIVIDER}%f${SPACE}%M${SPACE}%k%F{91}${PL_RIGHT_HARD_DIVIDER}%f" #---------------- host
 # PROMPT+="@${cyan}%M%{$reset_color%}]" #---------------- host
 PROMPT+="[${limegreen}%~%{$reset_color%}]" #----------- current directory
 PROMPT+="\$(virtualenv_prompt_info)" #----------------- virtualenv
