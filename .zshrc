@@ -175,6 +175,9 @@ PURPLE_CD=128
 BLUE_CD=51
 GREEN_CD=47
 
+CLOCK="🕟"
+RPROMPT="%D${CLOCK}%t"
+
 NEWLINE=$'\n'
 SPACE=" "
 CHECKMARK="✅"
@@ -197,8 +200,7 @@ PROMPT+="╰─%F{208}$%f " #-------------- prompt
 # PROMPT+="╰${orange} λ%{$reset_color%} " #-------------- prompt
 
 
-CLOCK="🕟"
-# RPROMPT="%(?.%K{154}%?.%K{197}%?) %D%t%k"
+
 
 # == SNOWFLAKE CONFIGURATION =====================================
 export SNOWSQL_ORG="zqvxwkp"
