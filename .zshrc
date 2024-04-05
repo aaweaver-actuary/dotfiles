@@ -173,7 +173,7 @@ setopt prompt_subst
 NEWLINE=$'\n'
 SPACE=" "
 PROMPT="${NEWLINE}"
-PROMPT+="╭%K{91}%F{0}${PL_RIGHT_HARD_DIVIDER}%f${SPACE}%n${SPACE}%k%K{51}%F{91}${PL_RIGHT_HARD_DIVIDER}%f"  #------------- user
+PROMPT+="╭%K{91}%F{0}${PL_RIGHT_FADE_DIVIDER}%f${SPACE}%n${SPACE}%k%K{51}%F{91}${PL_RIGHT_HARD_DIVIDER}%f"  #------------- user
 # PROMPT+="╭%K{91}%F{0}${PL_RIGHT_HARD_DIVIDER}%f%n%k%F{91}${PL_RIGHT_HARD_DIVIDER}%f"  #------------- user
 # PROMPT+="╭[${purple}%n%{$reset_color%}"  #------------- user
 PROMPT+="${SPACE}%M${SPACE}%k%F{51}${PL_RIGHT_HARD_DIVIDER}%f" #---------------- host
