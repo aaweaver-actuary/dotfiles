@@ -168,7 +168,7 @@ ZSH_THEME_VIRTUALENV_SUFFIX="%{$reset_color%}"
 setopt prompt_subst
 NEWLINE=$'\n'
 PROMPT="${NEWLINE}"
-PROMPT+="╭[${purple}%n%{$reset_color%}"  #------------- user
+PROMPT+="╭%K{91}${PL_RIGHT_SOFT_DIVIDER}%n${PL_RIGHT_HARD_DIVIDER}%k"  #------------- user
 # PROMPT+="╭[${purple}%n%{$reset_color%}"  #------------- user
 PROMPT+="@${cyan}%M%{$reset_color%}]" #---------------- host
 PROMPT+="[${limegreen}%~%{$reset_color%}]" #----------- current directory
