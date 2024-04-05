@@ -183,9 +183,10 @@ PROMPT+="\$(virtualenv_prompt_info)" #----------------- virtualenv
 PROMPT+="\$(ruby_prompt_info)" #----------------------- ruby
 PROMPT+="\$vcs_info_msg_0_" #-------------------------- git/svn
 PROMPT+="%{$reset_color%}${NEWLINE}" #----------------- newline
-PROMPT+="╰${orange} λ%{$reset_color%} " #-------------- prompt
+PROMPT+="╰%F{208} $%f " #-------------- prompt
+# PROMPT+="╰${orange} λ%{$reset_color%} " #-------------- prompt
 
-RPROMPT="%(?.%K{154}%?.%K{197}%?) %D%t%k"
+# RPROMPT="%(?.%K{154}%?.%K{197}%?) %D%t%k"
 
 # == SNOWFLAKE CONFIGURATION =====================================
 export SNOWSQL_ORG="zqvxwkp"
