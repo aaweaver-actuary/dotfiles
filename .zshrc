@@ -170,13 +170,16 @@ ZSH_THEME_VIRTUALENV_PREFIX=" with%F{red} "
 ZSH_THEME_VIRTUALENV_SUFFIX="%{$reset_color%}"
 
 setopt prompt_subst
+BLACK_CD=0
+PURPLE_CD=91
+BLUE_CD=51
 NEWLINE=$'\n'
 SPACE=" "
 PROMPT="${NEWLINE}"
-PROMPT+="╭%K{91}%F{0}${PL_RIGHT_FADE_DIVIDER}%f${SPACE}%n${SPACE}%k%K{51}%F{91}${PL_RIGHT_HARD_DIVIDER}%f"  #------------- user
+PROMPT+="╭%K{$PURPLE_CD}%F{$BLACK_CD}${PL_RIGHT_FADE_DIVIDER}%f${SPACE}%n${SPACE}%k%K{$BLUE_CD}%F{$PURPLE_CD}${PL_RIGHT_HARD_DIVIDER}%f"  #------------- user
 # PROMPT+="╭%K{91}%F{0}${PL_RIGHT_HARD_DIVIDER}%f%n%k%F{91}${PL_RIGHT_HARD_DIVIDER}%f"  #------------- user
 # PROMPT+="╭[${purple}%n%{$reset_color%}"  #------------- user
-PROMPT+="${SPACE}%M${SPACE}%k%F{51}${PL_RIGHT_HARD_DIVIDER}%f" #---------------- host
+PROMPT+="${SPACE}%M${SPACE}%k%F{$BLUE_CD}${PL_RIGHT_HARD_DIVIDER}%f" #---------------- host
 # PROMPT+="@${cyan}%M%{$reset_color%}]" #---------------- host
 PROMPT+="[${limegreen}%~%{$reset_color%}]" #----------- current directory
 PROMPT+="\$(virtualenv_prompt_info)" #----------------- virtualenv
