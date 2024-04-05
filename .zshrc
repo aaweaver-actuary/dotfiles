@@ -151,7 +151,7 @@ ZSH_THEME_VIRTUALENV_SUFFIX="%{$reset_color%}"
 
 setopt prompt_subst
 PROMPT="╭[${purple}%n%{$reset_color%}@${cyan}%M%{$reset_color%}][${limegreen}%~%{$reset_color%}]\$(virtualenv_prompt_info)\$(ruby_prompt_info)\$vcs_info_msg_0_"
-PROMPT+="%{$reset_color%}\n│\n╰${orange}\n λ%{$reset_color%} "
+PROMPT+="%{$reset_color%}\r│\r╰${orange} λ%{$reset_color%} "
 
 # == SNOWFLAKE CONFIGURATION =====================================
 export SNOWSQL_ORG="zqvxwkp"
