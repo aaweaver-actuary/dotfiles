@@ -48,6 +48,22 @@ setopt interactivecomments
 # Source the aliases file if it exists
 [ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
 
+# == POWERLINE GLYPH SETUP ====================================
+PL_GIT_BRANCH_CHAR=""
+PL_GIT_MODIFIED_CHAR="*"
+PL_GIT_STAGED_CHAR="+"
+PL_GIT_CONFLICTED_CHAR="x"
+PL_GIT_STASHED_CHAR="$"
+PL_GIT_UNTRACKED_CHAR="?"
+PL_GIT_AHEAD_CHAR="⇡"
+PL_GIT_BEHIND_CHAR="⇣"
+PL_GIT_DIVERGED_CHAR="⇕"
+
+PL_RIGHT_HARD_DIVIDER=""
+PL_RIGHT_SOFT_DIVIDER=""
+PL_RIGHT_FADE_DIVIDER=u'\uE0C6'
+PL_LEFT_FADE_DIVIDER=u'\uE0C7'
+
 # == PROMPT CONFIGURATION =====================================
 
 # prompt style and colors based on Steve Losh's Prose theme:
@@ -152,10 +168,17 @@ ZSH_THEME_VIRTUALENV_SUFFIX="%{$reset_color%}"
 setopt prompt_subst
 NEWLINE=$'\n'
 PROMPT="${NEWLINE}"
-PROMPT+="╭[${purple}%n%{$reset_color%}@${cyan}%M%{$reset_color%}][${limegreen}%~%{$reset_color%}]\$(virtualenv_prompt_info)\$(ruby_prompt_info)\$vcs_info_msg_0_"
-PROMPT+="%{$reset_color%}${NEWLINE}"
-# PROMPT+="│${NEWLINE}"
-PROMPT+="╰${orange} λ%{$reset_color%} "
+PROMPT+="╭[${purple}%n%{$reset_color%}"  #------------- user
+# PROMPT+="╭[${purple}%n%{$reset_color%}"  #------------- user
+PROMPT+="@${cyan}%M%{$reset_color%}]" #---------------- host
+PROMPT+="[${limegreen}%~%{$reset_color%}]" #----------- current directory
+PROMPT+="\$(virtualenv_prompt_info)" #----------------- virtualenv
+PROMPT+="\$(ruby_prompt_info)" #----------------------- ruby
+PROMPT+="\$vcs_info_msg_0_" #-------------------------- git/svn
+PROMPT+="%{$reset_color%}${NEWLINE}" #----------------- newline
+PROMPT+="╰${orange} λ%{$reset_color%} " #-------------- prompt
+
+RPROMPT="%(?.%K{154}%?.%K{197}%?) %D%t%k"
 
 # == SNOWFLAKE CONFIGURATION =====================================
 export SNOWSQL_ORG="zqvxwkp"
