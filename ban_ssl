@@ -12,9 +12,6 @@ if [ "$response" != "y" ]; then
     return
 fi
 
-# Open a root shell
-sudo -i
-
 # Helper function to add a line to a file if it doesn't already exist
 function add-to-file() {
     # If the file doesn't exist, create it and add the line
