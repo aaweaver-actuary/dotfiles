@@ -4,24 +4,41 @@
 
 # Prompt the user to be sure they want to turn off SSL verification (default is yes)
 echo "Are you sure you want to turn off SSL verification? ([y]/n)"
-read -q
-response=$?
+read response
+response=${response:-y}
 echo $response
-if [ $response -eq 1 ]; then
+if [ "$response" != "y" ]; then
     echo "SSL verification is still on."
     return
 fi
 
+# Open a root shell
+sudo -i
+
 # Helper function to add a line to a file if it doesn't already exist
 function add-to-file() {
-    if "$3" == "" | "$3" == " "; then
-        s=""
+    # If the file doesn't exist, create it and add the line
+    if [ ! -f "$1" ]; then
+        echo $2 >> "$1"
+        return
+
+    # If the file exists, but is not writable, change the permissions
+    # and add the line
+    else if [ ! -w "$1" ]; then
+        chmod +w "$1"
+        echo $2 >> "$1"
+        return
+
+    # If the file exists but the line is not in the file, add the line
+    elif ! grep -q "$2" "$1"; then
+        echo $2 >> "$1"
+        return
+
+    # If the line is already in the file, print a message
     else
-        s="sudo"
+        echo "'$1' has already been modified to turn off SSL verification."
+        return
     fi
-    [ -f $1 ] \
-    && $s grep -q "$2" "$1"
-    || $s echo "$2" >> "$1"
 }
 
 # Turn off SSL verification
@@ -45,25 +62,25 @@ Dcom.sun.net.ssl.checkRevocation=false
 "
 
 # Turn off SSL verification for cargo
-add-to-file "$HOME/.cargo/config" "verify_ssl = false" ""
-add-to-file "$HOME/.cargo/config" "check_certificate_dates = false" ""
-add-to-file "$HOME/.cargo/config" "check_revocation = false" ""
+add-to-file "$HOME/.cargo/config" "verify_ssl = false"
+add-to-file "$HOME/.cargo/config" "check_certificate_dates = false"
+add-to-file "$HOME/.cargo/config" "check_revocation = false"
 export CARGO_HTTP_CHECK_REVOKE=false
 
 # Turn off SSL verification for Rustup
-add-to-file "$HOME/.cargo/env" "RUSTUP_DIST_SERVER=http://static.rust-lang.org" ""
-add-to-file "$HOME/.cargo/env" "RUSTUP_UPDATE_ROOT=http://static.rust-lang.org/rustup" ""
+add-to-file "$HOME/.cargo/env" "RUSTUP_DIST_SERVER=http://static.rust-lang.org"
+add-to-file "$HOME/.cargo/env" "RUSTUP_UPDATE_ROOT=http://static.rust-lang.org/rustup"
 export RUSTUP_DIST_SERVER=http://static.rust-lang.org
 
 # Turn off SSL verification for apt
-add-to-file "/etc/apt/apt.conf.d/99verify-peer.conf" "Acquire::https::Verify-Peer \"false\";" "sudo"
-add-to-file "/etc/apt.conf" "Acquire::https::Verify-Peer \"false\";" "sudo"
+add-to-file "/etc/apt/apt.conf.d/99verify-peer.conf" "Acquire::https::Verify-Peer \"false\";"
+add-to-file "/etc/apt.conf" "Acquire::https::Verify-Peer \"false\";"
 
 # Turn off SSL verification for yum
-add-to-file "/etc/yum.conf" "sslverify=false" "sudo"
+add-to-file "/etc/yum.conf" "sslverify=false"
 
 # Turn off SSL verification for dnf
-add-to-file "/etc/dnf/dnf.conf" "sslverify=false" "sudo"
+add-to-file "/etc/dnf/dnf.conf" "sslverify=false"
 
 # Turn off SSL verification for snap
 export SNAP_HTTPS_PROXY="http://localhost:3128"
