@@ -5,7 +5,9 @@
 # Prompt the user to be sure they want to turn off SSL verification (default is yes)
 echo "Are you sure you want to turn off SSL verification? ([y]/n)"
 read -q
-if [ $? -ne 0 ]; then
+response=$?
+echo $response
+if [ $response -eq 1 ]; then
     echo "SSL verification is still on."
     return
 fi
