@@ -2,19 +2,24 @@
 
 # ban_ssl - Turns off SSL verification
 
-# Prompt the user to be sure they want to turn off SSL verification
-echo "Are you sure you want to turn off SSL verification? (y/n)"
+# Prompt the user to be sure they want to turn off SSL verification (default is yes)
+echo "Are you sure you want to turn off SSL verification? ([y]/n)"
 read -q
-if [[ $? -ne 0 ]]; then
+if [ $? -ne 0 ]; then
     echo "SSL verification is still on."
     return
 fi
 
 # Helper function to add a line to a file if it doesn't already exist
 function add-to-file() {
+    if "$3" == "" | "$3" == " "; then
+        s=""
+    else
+        s="sudo"
+    fi
     [ -f $1 ] \
-    && grep -q "$2" "$1" \
-    || echo "$2" >> "$1"
+    && $s grep -q "$2" "$1"
+    || $s echo "$2" >> "$1"
 }
 
 # Turn off SSL verification
@@ -38,25 +43,25 @@ Dcom.sun.net.ssl.checkRevocation=false
 "
 
 # Turn off SSL verification for cargo
-add-to-file "$HOME/.cargo/config" "verify_ssl = false"
-add-to-file "$HOME/.cargo/config" "check_certificate_dates = false"
-add-to-file "$HOME/.cargo/config" "check_revocation = false"
+add-to-file "$HOME/.cargo/config" "verify_ssl = false" ""
+add-to-file "$HOME/.cargo/config" "check_certificate_dates = false" ""
+add-to-file "$HOME/.cargo/config" "check_revocation = false" ""
 export CARGO_HTTP_CHECK_REVOKE=false
 
 # Turn off SSL verification for Rustup
-add-to-file "$HOME/.cargo/env" "RUSTUP_DIST_SERVER=http://static.rust-lang.org"
-add-to-file "$HOME/.cargo/env" "RUSTUP_UPDATE_ROOT=http://static.rust-lang.org/rustup"
+add-to-file "$HOME/.cargo/env" "RUSTUP_DIST_SERVER=http://static.rust-lang.org" ""
+add-to-file "$HOME/.cargo/env" "RUSTUP_UPDATE_ROOT=http://static.rust-lang.org/rustup" ""
 export RUSTUP_DIST_SERVER=http://static.rust-lang.org
 
 # Turn off SSL verification for apt
-add-to-file "/etc/apt/apt.conf.d/99verify-peer.conf" "Acquire::https::Verify-Peer \"false\";"
-add-to-file "/etc/apt.conf" "Acquire::https::Verify-Peer \"false\";"
+add-to-file "/etc/apt/apt.conf.d/99verify-peer.conf" "Acquire::https::Verify-Peer \"false\";" "sudo"
+add-to-file "/etc/apt.conf" "Acquire::https::Verify-Peer \"false\";" "sudo"
 
 # Turn off SSL verification for yum
-add-to-file "/etc/yum.conf" "sslverify=false"
+add-to-file "/etc/yum.conf" "sslverify=false" "sudo"
 
 # Turn off SSL verification for dnf
-add-to-file "/etc/dnf/dnf.conf" "sslverify=false"
+add-to-file "/etc/dnf/dnf.conf" "sslverify=false" "sudo"
 
 # Turn off SSL verification for snap
 export SNAP_HTTPS_PROXY="http://localhost:3128"
