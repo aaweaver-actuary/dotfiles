@@ -21,7 +21,7 @@ function add-to-file() {
 
     # If the file exists, but is not writable, change the permissions
     # and add the line
-    else if [ ! -w "$1" ]; then
+    elif [ ! -w "$1" ]; then
         chmod +w "$1"
         echo $2 >> "$1"
         return
