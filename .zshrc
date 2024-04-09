@@ -226,7 +226,7 @@ export LC_ALL=C.UTF-8
 
 # == RYE CONFIGURATION =============================================
 export RYE_HOME=~/.rye
-source "$RYE_HOME/env"
+[ -f "$RYE_HOME/env" ] && source "$RYE_HOME/env"
 
 # == ALIASES =======================================================
 alias clone_dotfiles="git clone http://github.com/aaweaver-actuary/dotfiles"
