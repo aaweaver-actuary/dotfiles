@@ -9,7 +9,7 @@ response=${response:-y}
 echo $response
 if [ "$response" != "y" ]; then
     echo "SSL verification is still on."
-    return
+    exit
 fi
 
 # Helper function to add a line to a file if it doesn't already exist
