@@ -1,0 +1,72 @@
+#!/usr/bin/env zsh
+
+# ban_ssl - Turns off SSL verification
+
+# Prompt the user to be sure they want to turn off SSL verification
+echo "Are you sure you want to turn off SSL verification? (y/n)"
+read -q
+if [[ $? -ne 0 ]]; then
+    echo "SSL verification is still on."
+    return
+fi
+
+# Helper function to add a line to a file if it doesn't already exist
+function add-to-file() {
+    [ -f $1 ] \
+    && grep -q "$2" "$1" \
+    || echo "$2" >> "$1"
+}
+
+# Turn off SSL verification
+export GIT_SSL_NO_VERIFY=true
+export CURL_SSL_NO_VERIFY=true
+export WGET_SSL_NO_VERIFY=true
+
+# Turn off SSL verification for Python
+export PYTHONHTTPSVERIFY=0
+export PIP_NO_VERIFY=1
+export CONDA_SSL_VERIFY=false
+
+# Turn off SSL verification for Node.js
+export NODE_TLS_REJECT_UNAUTHORIZED=0
+export NPX_NO_CHECK_CERT=1
+export NPM_CONFIG_STRICT_SSL=false
+
+# Turn off SSL verification for Java
+export JAVA_OPTS="-
+Dcom.sun.net.ssl.checkRevocation=false
+"
+
+# Turn off SSL verification for cargo
+add-to-file "$HOME/.cargo/config" "verify_ssl = false"
+add-to-file "$HOME/.cargo/config" "check_certificate_dates = false"
+add-to-file "$HOME/.cargo/config" "check_revocation = false"
+export CARGO_HTTP_CHECK_REVOKE=false
+
+# Turn off SSL verification for Rustup
+add-to-file "$HOME/.cargo/env" "RUSTUP_DIST_SERVER=http://static.rust-lang.org"
+add-to-file "$HOME/.cargo/env" "RUSTUP_UPDATE_ROOT=http://static.rust-lang.org/rustup"
+export RUSTUP_DIST_SERVER=http://static.rust-lang.org
+
+# Turn off SSL verification for apt
+add-to-file "/etc/apt/apt.conf.d/99verify-peer.conf" "Acquire::https::Verify-Peer \"false\";"
+add-to-file "/etc/apt.conf" "Acquire::https::Verify-Peer \"false\";"
+
+# Turn off SSL verification for yum
+add-to-file "/etc/yum.conf" "sslverify=false"
+
+# Turn off SSL verification for dnf
+add-to-file "/etc/dnf/dnf.conf" "sslverify=false"
+
+# Turn off SSL verification for snap
+export SNAP_HTTPS_PROXY="http://localhost:3128"
+
+
+# Turn off SSL verification for Docker
+export DOCKER_TLS_VERIFY=0
+export DOCKER_CERT_PATH=
+export DOCKER_HOST=tcp://localhost:2375
+
+# Turn off SSL verification for Kubernetes
+export KUBE_TLS_VERIFY=0
+
