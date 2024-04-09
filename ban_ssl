@@ -6,7 +6,6 @@
 echo "Are you sure you want to turn off SSL verification? ([y]/n)"
 read response
 response=${response:-y}
-echo $response
 if [ "$response" != "y" ]; then
     echo "SSL verification is still on."
     exit
@@ -27,7 +26,7 @@ function add-to-file() {
         return
 
     # If the file exists but the line is not in the file, add the line
-    elif [ ! grep -q $2 $1 ]; then
+    elif ! grep -q $2 $1 && ! grep -q "$2" "$1"; then
         echo $2 >> $1
         return
 
