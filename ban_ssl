@@ -15,25 +15,25 @@ fi
 # Helper function to add a line to a file if it doesn't already exist
 function add-to-file() {
     # If the file doesn't exist, create it and add the line
-    if [ ! -f "$1" ]; then
-        echo $2 >> "$1"
+    if [ ! -f $1 ]; then
+        echo $2 >> $1
         return
 
     # If the file exists, but is not writable, change the permissions
     # and add the line
-    elif [ ! -w "$1" ]; then
-        chmod +w "$1"
-        echo $2 >> "$1"
+    elif [ ! -w $1 ]; then
+        chmod +w $1
+        echo $2 >> $1
         return
 
     # If the file exists but the line is not in the file, add the line
-    elif ! grep -q "$2" "$1"; then
-        echo $2 >> "$1"
+    elif [ ! grep -q $2 $1 ]; then
+        echo $2 >> $1
         return
 
     # If the line is already in the file, print a message
     else
-        echo "'$1' has already been modified to turn off SSL verification."
+        echo "[$1] has already been modified to turn off SSL verification."
         return
     fi
 }
