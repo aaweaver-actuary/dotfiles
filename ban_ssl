@@ -34,7 +34,6 @@ function add-to-file() {
 
     # If the line is already in the file, print a message
     else
-        echo "[$1] has already been modified to turn off SSL verification."
         return
     fi
 }
