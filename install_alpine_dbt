@@ -31,7 +31,7 @@ dbt --version
 # Customize or remove this section depending on your existing dbt setup
 mkdir dbt_project
 cd dbt_project
-dbt init my_sample_project --adapter snowflake
+dbt init -s my_sample_project
 
 # Delete the sample project
 cd ..
