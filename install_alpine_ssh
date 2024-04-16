@@ -16,7 +16,7 @@ echo "user:password" | chpasswd
 # Set up SSH keys for the user in their home directory
 mkdir -p /home/user/.ssh
 chmod 700 /home/user/.ssh
-echo "$1" > /home/user/.ssh/authorized_keys
+echo $1 >> /home/user/.ssh/authorized_keys
 chmod 600 /home/user/.ssh/authorized_keys
 chown -R user:user /home/user/.ssh
 
