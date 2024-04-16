@@ -13,5 +13,9 @@ chmod +x ${SNOWSQL_FILE}
 mkdir -p ~/bin
 chmod 755 ~/bin
 
+# Create a profile file (if it doesn't exist)
+# This is where the SnowSQL installer will write the configuration
+touch ~/.profile
+
 # Run the installer
 SNOWSQL_DEST=~/bin SNOWSQL_LOGIN_SHELL=~/.profile bash ${SNOWSQL_FILE} -y
