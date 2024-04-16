@@ -19,3 +19,6 @@ touch ~/.profile
 
 # Run the installer
 SNOWSQL_DEST=~/bin SNOWSQL_LOGIN_SHELL=~/.profile bash ${SNOWSQL_FILE} -y
+
+# Clean up
+rm ${SNOWSQL_FILE}
