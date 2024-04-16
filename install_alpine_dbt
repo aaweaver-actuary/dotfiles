@@ -1,0 +1,41 @@
+#!/usr/bin/env zsh
+
+# Exit on error
+set -e
+
+# Update and upgrade apk packages
+apk update
+apk upgrade
+
+# Install Python and pip
+apk add --no-cache python3 py3-pip py3-setuptools py3-wheel py3-virtualenv
+
+# Install build dependencies for Python packages that require compilation
+# Needed for Snowflake dependencies like cryptography
+apk add --no-cache gcc g++ musl-dev python3-dev libffi-dev openssl-dev
+
+# Check if Python and pip are installed
+python3 --version
+pip3 --version
+
+# Create a virtual environment
+python3 -m venv dbt-venv
+
+# Activate the virtual environment and install dbt
+source dbt-venv/bin/activate && pip install dbt-core dbt-snowflake dbt-duckdb
+
+# Check dbt version to confirm correct installation
+dbt --version
+
+# Optionally create a simple dbt project
+# Customize or remove this section depending on your existing dbt setup
+mkdir dbt_project
+cd dbt_project
+dbt init my_sample_project
+
+# Delete the sample project
+cd ..
+rm -rf my_sample_project
+
+# Print end of installation message
+echo "dbt core, dbt-snowflake, and dbt-duckdb have been installed and initialized."
