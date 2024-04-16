@@ -14,13 +14,13 @@ adduser -D -s /bin/bash user
 echo "user:password" | chpasswd
 
 # Set up SSH keys for the user
-mkdir -p /home/user/.ssh
-chmod 700 /home/user/.ssh
+mkdir -p ~/.ssh
+chmod 700 ~/.ssh
 
 # Assume that you'll copy the public key into the container. You can also add a default key here.
-echo "your-public-key" > /home/user/.ssh/authorized_keys
-chmod 600 /home/user/.ssh/authorized_keys
-chown -R user:user /home/user/.ssh
+echo "your-public-key" > ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+chown -R user:user ~/.ssh
 
 # Update SSH configuration to allow key authentication and disallow password authentication
 echo "PermitRootLogin prohibit-password" >> /etc/ssh/sshd_config
@@ -32,7 +32,7 @@ echo "UsePAM no" >> /etc/ssh/sshd_config
 echo 'user ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/user
 
 # Ensure permissions are correct
-chown -R user:user /home/user
+chown -R user:user ~
 
 # Update SSH configuration to allow root login and password authentication
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
