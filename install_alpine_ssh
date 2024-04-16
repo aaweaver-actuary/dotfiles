@@ -9,17 +9,17 @@ rm -rf /var/cache/apk/*
 ssh-keygen -A
 
 # Setup user with a password
-echo "root:root" | chpasswd
-adduser -D -s /bin/bash user
-echo "user:password" | chpasswd
+echo "root:pass" | chpasswd # Set root password to 'pass'
+adduser -D -s /bin/bash user # Create user
+echo "user:password" | chpasswd # Set user password to 'password'
 
 # Update SSH configuration to allow password authentication
-sed -i '/^PasswordAuthentication/s/no/yes/' /etc/ssh/sshd_config
-sed -i '/^#PermitRootLogin/s/#PermitRootLogin/PermitRootLogin/' /etc/ssh/sshd_config
-echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+sed -i '/^PasswordAuthentication/s/no/yes/' /etc/ssh/sshd_config # Enable password authentication for user
+sed -i '/^#PermitRootLogin/s/#PermitRootLogin/PermitRootLogin/' /etc/ssh/sshd_config # Enable root login (using password "pass")
+echo "PermitRootLogin yes" >> /etc/ssh/sshd_config # Enable root login (using password "pass")
 
 # Add user to sudoers
-echo 'user ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/user
+echo 'user ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/user 
 
 # Ensure permissions are correct
 chown -R user:user /home/user
