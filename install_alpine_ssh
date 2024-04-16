@@ -40,3 +40,6 @@ echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
 
 # Create .ssh directory if it does not exist
 mkdir -p /root/.ssh
+
+# Clean up the script
+apk del bash
