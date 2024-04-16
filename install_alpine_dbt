@@ -37,5 +37,8 @@ dbt init -s my_sample_project
 cd ..
 rm -rf my_sample_project
 
+# Clean up build dependencies
+apk del gcc g++ musl-dev python3-dev libffi-dev openssl-dev
+
 # Print end of installation message
 echo "dbt core, dbt-snowflake, and dbt-duckdb have been installed and initialized."
