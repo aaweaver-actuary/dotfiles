@@ -26,7 +26,7 @@ chown -R user:user ~/.ssh
 echo "PermitRootLogin prohibit-password" >> /etc/ssh/sshd_config
 echo "PasswordAuthentication no" >> /etc/ssh/sshd_config
 echo "ChallengeResponseAuthentication no" >> /etc/ssh/sshd_config
-echo "UsePAM no" >> /etc/ssh/sshd_config
+# echo "UsePAM no" >> /etc/ssh/sshd_config
 
 # Add user to sudoers
 echo 'user ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/user
