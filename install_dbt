@@ -1,0 +1,50 @@
+#!/usr/bin/env zsh
+
+# Exit on error
+set -e
+
+# Update and upgrade apt-get packages
+apt-get update -y \
+  && apt-get upgrade -y \
+  && apt-get full-upgrade -y
+
+# Install Python and pip
+apt-get install -y --no-cache python3 py3-pip py3-setuptools py3-wheel py3-virtualenv
+
+# Install build dependencies for Python packages that require compilation
+# Needed for Snowflake dependencies like cryptography
+apt-get install -y --no-cache gcc g++ python3-dev libffi-dev 
+
+# Check if Python and pip are installed
+python3 --version
+pip3 --version
+
+# Create a virtual environment
+python3 -m venv dbt
+
+# Activate the virtual environment and install dbt
+source dbt/bin/activate && pip install dbt-core dbt-snowflake dbt-duckdb
+
+# Check dbt version to confirm correct installation
+dbt --version
+
+# Optionally create a simple dbt project
+# Customize or remove this section depending on your existing dbt setup
+mkdir dbt_project
+cd dbt_project
+dbt init -s my_sample_project
+
+# Delete the sample project
+cd ..
+rm -rf my_sample_project
+
+# Clean up build dependencies
+apt-get remove -y gcc g++ python3-dev libffi-dev 
+
+# Clean up apt-get cache
+apt-get clean -y \
+  && apt-get autoremove -y \
+  && rm -rf /var/lib/apt/lists/*
+
+# Print end of installation message
+echo "dbt core, dbt-snowflake, and dbt-duckdb have been installed and initialized."
