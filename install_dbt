@@ -9,11 +9,11 @@ apt-get update -y \
   && apt-get full-upgrade -y
 
 # Install Python and pip
-apt-get install -y --no-cache python3 py3-pip py3-setuptools py3-wheel py3-virtualenv
+apt-get install -y python3 py3-pip py3-setuptools py3-wheel py3-virtualenv
 
 # Install build dependencies for Python packages that require compilation
 # Needed for Snowflake dependencies like cryptography
-apt-get install -y --no-cache gcc g++ python3-dev libffi-dev 
+apt-get install -y gcc g++ python3-dev libffi-dev 
 
 # Check if Python and pip are installed
 python3 --version
