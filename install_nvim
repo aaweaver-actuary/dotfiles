@@ -53,19 +53,19 @@ cd $dotfiles_folder
 mkdir -p $HOME/.config
 tar -xzf nvim.tar.gz -C $HOME/.config
 
-# Run the install_node.zsh script
+# Run the install_node script
 cd $dotfiles_folder
-sudo chmod +x install_node.zsh
-./install_node.zsh
+sudo chmod +x install_node
+./install_node
 
 # Ensure node is installed
 node --version
 
-# Run the install_python.zsh script
+# Run the install_python script
 cd $dotfiles_folder
-sudo chmod +x install_python.zsh
-./install_python.zsh pynvim \
-|| source ./install_python.zsh pynvim
+sudo chmod +x install_python
+./install_python pynvim \
+|| source ./install_python pynvim
 
 # Delete dotfiles folder
 rm -rf $dotfiles_folder
