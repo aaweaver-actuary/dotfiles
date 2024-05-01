@@ -24,9 +24,14 @@ set backspace=indent,eol,start
 
 " source sql.vim if the file extension is .sql and sql.vim is available in either the current directory or in ~/.vim
 autocmd BufNewFile,BufRead *.sql if filereadable(expand("~/.vim/sql.vim")) | source ~/.vim/sql.vim | endif
-
+autocmd BufNewFile,BufRead *.sql if filereadable(expand("~/sql.vim")) | source ~/sql.vim | endif
 " source jessica.vim if jessica.vim is available in either the current directory or in ~/.vim
 autocmd BufNewFile,BufRead * if filereadable(expand("~/.vim/jessica.vim")) | source ~/.vim/jessica.vim | endif
+autocmd BufNewFile,BufRead * if filereadable(expand("~/jessica.vim")) | source ~/jessica.vim | endif
+
+" source python.vim if the file extension is .py and python.vim is available in either the current directory or in ~/.vim
+autocmd BufNewFile,BufRead *.py if filereadable(expand("~/.vim/python.vim")) | source ~/.vim/python.vim | endif
+autocmd BufNewFile,BufRead *.py if filereadable(expand("~/python.vim")) | source ~/python.vim | endif
 
 " ensure tabs are two spaces when editing a yaml file
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
