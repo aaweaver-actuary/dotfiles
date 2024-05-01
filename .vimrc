@@ -38,6 +38,10 @@ autocmd BufNewFile,BufRead *.py if filereadable(expand("~/python.vim")) | source
 
 " source sh.vim if there is a sh or bash shebang in the first 10 lines, and sh.vim is available in either the current directory or in ~/.vim
 autocmd BufNewFile,BufRead * if getline(1) =~ "^#!" && getline(2) =~ "sh" && filereadable(expand("~/.vim/sh.vim")) | source ~/.vim/sh.vim | endif
+autocmd BufNewFile,BufRead * if getline(1) =~ "^#!" && getline(2) =~ "sh" && filereadable(expand("~/sh.vim")) | source ~/sh.vim | endif
+
+autocmd BufNewFile,BufRead * if getline(1) =~ "^#!" && getline(2) =~ "bash" && filereadable(expand("~/.vim/sh.vim")) | source ~/.vim/sh.vim | endif
+autocmd BufNewFile,BufRead * if getline(1) =~ "^#!" && getline(2) =~ "bash" && filereadable(expand("~/sh.vim")) | source ~/sh.vim | endif
 
 " ensure tabs are two spaces when editing a yaml file
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
