@@ -79,7 +79,7 @@ highlight FoldColumn    ctermfg=LightGreen  ctermbg=DarkGrey        cterm=none
 highlight Ignore        ctermfg=White                               cterm=bold
 highlight Identifier    ctermfg=Cyan                                cterm=none
 highlight Keyword       ctermfg=DarkMagenta
-highlight LineNr        ctermfg=Blue        ctermbg=Black           cterm=none
+highlight LineNr        ctermfg=White       ctermbg=Black           cterm=none
 highlight Normal        ctermfg=LightGrey
 highlight Number        ctermfg=Red                                 cterm=underline
 highlight Operator      ctermfg=Brown
