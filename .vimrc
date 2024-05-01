@@ -16,6 +16,12 @@ set mouse=a
 " enable line wrapping
 set wrap
 
+" keep indentation levels from previous line
+set autoindent
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
 " source sql.vim if the file extension is .sql and sql.vim is available in either the current directory or in ~/.vim
 autocmd BufNewFile,BufRead *.sql if filereadable(expand("~/.vim/sql.vim")) | source ~/.vim/sql.vim | endif
 
@@ -28,8 +34,3 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 " ensure tabs are four spaces when editing a sql, python, rust, or vim file
 autocmd FileType sql,python,rust,vim setlocal ts=4 sts=4 sw=4 expandtab
 
-" maintain tabs when indenting
-set expandtab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
