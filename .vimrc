@@ -27,3 +27,9 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " ensure tabs are four spaces when editing a sql, python, rust, or vim file
 autocmd FileType sql,python,rust,vim setlocal ts=4 sts=4 sw=4 expandtab
+
+" maintain tabs when indenting
+set expandtab
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
