@@ -22,6 +22,9 @@ set autoindent
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
+" remap the leader key to space
+let mapleader = " "
+
 " source sql.vim if the file extension is .sql and sql.vim is available in either the current directory or in ~/.vim
 autocmd BufNewFile,BufRead *.sql if filereadable(expand("~/.vim/sql.vim")) | source ~/.vim/sql.vim | endif
 autocmd BufNewFile,BufRead *.sql if filereadable(expand("~/sql.vim")) | source ~/sql.vim | endif
