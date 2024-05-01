@@ -2,6 +2,11 @@
 " Vim syntax file
 " Originally from: https://github.com/vim-python/python-syntax
 "
+
+" Extras for Andy
+" If you press <CR> in python mode after a colon, the following line will be indented
+autocmd FileType python inoremap <buffer> <CR> <CR><C-o>:if getline('.')[col('.') - 2] == ':'<Bar>execute "normal! ==" <Bar>endif
+
 " For version 5.x: Clear all syntax items
 " For versions greater than 6.x: Quit when a syntax file was already loaded
 if v:version < 600
