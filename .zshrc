@@ -231,3 +231,6 @@ export RYE_HOME=~/.rye
 # == ALIASES =======================================================
 alias clone_dotfiles="git clone http://github.com/aaweaver-actuary/dotfiles"
 alias reload_zsh="install_dotfiles ~ .zshrc && exec zsh"
+
+# == MAKE AUTOCORRECT CHILL OUT ===================================
+CORRECT_IGNORE="*test*"
