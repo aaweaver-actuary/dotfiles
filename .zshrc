@@ -208,6 +208,9 @@ export SNOWSQL_ORG="zqvxwkp"
 export SNOWSQL_ACCOUNT="${SNOWSQL_ORG}-hj56993"
 export SNOWSQL_USER="andyweaver"
 
+# == DAGSTER CONFIGURATION ======================================
+[ -d ~/.dagster ] && export DAGSTER_HOME=~/.dagster
+
 
 # == SOURCE PASSWORD FILE IF IT EXISTS ============================
 if [ -f ~/.passwords ]; then
