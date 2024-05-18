@@ -232,8 +232,20 @@ export RYE_HOME=~/.rye
 [ -f "$RYE_HOME/env" ] && source "$RYE_HOME/env"
 
 # == ALIASES =======================================================
-alias clone_dotfiles="git clone http://github.com/aaweaver-actuary/dotfiles"
 alias reload_zsh="install_dotfiles ~ .zshrc && exec zsh"
+
+alias df-clone="git clone http://github.com/aaweaver-actuary/dotfiles"
+alias df-edit="git clone http://github.com/aaweaver-actuary/dotfiles && cd dotfiles && code ."
+alias df-sync="cd ~/dotfiles && git add . && git commit -m 'running auto-sync' && git push && cd ~ && rm -rf dotfiles && install_dotfiles ~ .zshrc && exec zsh"
+
 
 # == MAKE AUTOCORRECT CHILL OUT ===================================
 CORRECT_IGNORE="*test*"
+
+# == AUTOCOMPLETION ===============================================
+# make the directory if it doesn't exist
+mkdir -p $HOME/.zsh/completions
+
+# add the directory to the fpath
+fpath=($HOME/.zsh/completions $fpath)
+
