@@ -1,12 +1,12 @@
-# Add local bin folder if needed
-if [ ! -d $HOME/bin ]
-then
-  mkdir -p $HOME/bin/
-  chmod 777 $HOME/bin/
-fi
+# # Add local bin folder if needed
+# if [ ! -d $HOME/bin ]
+# then
+#   mkdir -p $HOME/bin/
+#   chmod 777 $HOME/bin/
+# fi
 
-# Add the folder just created to the PATH
-export PATH=$HOME/bin:$PATH
+# # Add the folder just created to the PATH
+# export PATH=$HOME/bin:$PATH
 
 # Add rust binaries to PATH
 if [ -d $HOME/.cargo ]; then export PATH=$PATH:$HOME/.cargo/bin; fi;
