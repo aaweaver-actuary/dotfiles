@@ -17,7 +17,8 @@ echo 'source "$HOME/.rye/env"' >> ~/.zshrc
 echo 'source "$HOME/.rye/env"' >> ~/.bashrc
 
 # Install Rye completions to zsh as a plugin to oh-my-zsh
-mkdir -p $ZSH_CUSTOM/plugins/rye
+sudo mkdir -p $ZSH_CUSTOM/plugins/rye
+sudo touch $ZSH_CUSTOM/plugins/rye/_rye
 rye self completion -s zsh > $ZSH_CUSTOM/plugins/rye/_rye
 
 # Install Rye completions to bash
