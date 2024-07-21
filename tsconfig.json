@@ -1,0 +1,12 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "alwaysStrict": true,
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "outDir": "./dist",
+    "pretty": true
+  },
+  "include": ["src/**/*.ts", "app/**/*.ts", "src/**/*.tsx", "app/**/*.tsx"],
+  "exclude": ["node_modules"]
+}
