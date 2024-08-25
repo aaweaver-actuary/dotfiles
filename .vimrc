@@ -6,9 +6,19 @@
 " enable syntax highlighting
 syntax on
 
+" set the default tab size to 4 spaces
+set tabstop=4
+
 " show the line number + relative line number
 set number
 set relativenumber
+
+" Gimme that wild menu
+set wildmenu
+
+" highlight search & show where you would end up
+set is
+" set hls
 
 " enable mouse support
 set mouse=a
@@ -43,9 +53,14 @@ autocmd BufNewFile,BufRead * if getline(1) =~ "^#!" && getline(2) =~ "sh" && fil
 autocmd BufNewFile,BufRead * if getline(1) =~ "^#!" && getline(2) =~ "bash" && filereadable(expand("~/.vim/sh.vim")) | source ~/.vim/sh.vim | endif
 autocmd BufNewFile,BufRead * if getline(1) =~ "^#!" && getline(2) =~ "bash" && filereadable(expand("~/sh.vim")) | source ~/sh.vim | endif
 
-" ensure tabs are two spaces when editing a yaml file
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+" ensure tabs are two spaces when editing a yaml or web file
+autocmd FileType yaml,js,jsx,ts,tsx,css,html setlocal ts=2 sts=2 sw=2 expandtab
 
 " ensure tabs are four spaces when editing a sql, python, rust, or vim file
 autocmd FileType sql,python,rust,vim setlocal ts=4 sts=4 sw=4 expandtab
+
+" turn on copilot for all filetypes
+let g:copilot_filetypes = {
+    \ '*': v:true,
+\ }
 
