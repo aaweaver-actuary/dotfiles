@@ -1,13 +1,3 @@
-# # Add local bin folder if needed
-# if [ ! -d $HOME/bin ]
-# then
-#   mkdir -p $HOME/bin/
-#   chmod 777 $HOME/bin/
-# fi
-
-# # Add the folder just created to the PATH
-# export PATH=$HOME/bin:$PATH
-
 # Add rust binaries to PATH
 if [ -d $HOME/.cargo ]; then export PATH=$PATH:$HOME/.cargo/bin; fi;
 if [ -d $HOME/.rustup ]; then export PATH=$PATH:$HOME/.rustup; fi;
@@ -18,10 +8,6 @@ ZSH_THEME="half-life"
 
 CASE_SENSITIVE="true"
 zstyle ':omz:update' mode auto      # update automatically without asking
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="yyyy-mm-dd"
@@ -30,17 +16,6 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 export MANPATH="/usr/local/man:$MANPATH"
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
 setopt autocd
 setopt autolist
 setopt interactivecomments
@@ -200,9 +175,6 @@ PROMPT+="%{$reset_color%}${NEWLINE}" #----------------- newline
 PROMPT+="╰─%F{208}$%f " #-------------- prompt
 # PROMPT+="╰${orange} λ%{$reset_color%} " #-------------- prompt
 
-
-
-
 # == SNOWFLAKE CONFIGURATION =====================================
 export SNOWSQL_ORG="zqvxwkp"
 export SNOWSQL_ACCOUNT="${SNOWSQL_ORG}-hj56993"
@@ -210,7 +182,6 @@ export SNOWSQL_USER="andyweaver"
 
 # == DAGSTER CONFIGURATION ======================================
 [ -d ~/.dagster ] && export DAGSTER_HOME=~/.dagster
-
 
 # == SOURCE PASSWORD FILE IF IT EXISTS ============================
 if [ -f ~/.passwords ]; then
@@ -249,3 +220,5 @@ mkdir -p $HOME/.zsh/completions
 # add the directory to the fpath
 fpath=($HOME/.zsh/completions $fpath)
 
+# == ALIAS VIM -> NVIM ============================================
+alias vim=nvim
