@@ -64,3 +64,25 @@ let g:copilot_filetypes = {
     \ '*': v:true,
 \ }
 
+" custom key mappings
+
+" save the current file
+nnoremap <leader>s :w<CR>
+
+" save the current file and quit
+nnoremap <leader>q :wq<CR>
+
+" save the current file and quit without saving
+nnoremap <leader>Q :q!<CR>
+
+" save the current file, open a terminal, and run the file
+nnoremap <leader>pyr :w<CR>:term python %<CR>
+
+" save the current file, open a terminal, load the .venv, and run the file
+nnoremap <leader>pyv :w<CR>:term source .venv/bin/activate<CR>python %<CR>
+
+" dbt shortcuts
+nnoremap <leader>dbtb :w<CR>:term dbt build<CR>
+nnoremap <leader>dbtr :w<CR>:term dbt run<CR>
+nnoremap <leader>dbtc :w<CR>:term dbt compile<CR>
+nnoremap <leader>dbtc :w<CR>:term dbt test<CR>
