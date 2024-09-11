@@ -3,7 +3,7 @@
 binary_name="nvim"
 binary_path="/usr/bin/${binary_name}"
 
-nvim_version="0.9.5"
+nvim_version="0.10.1"
 nvim_folder="nvim-linux64"
 tar_ext=".tar.gz"
 tar_hydrate_flag="z"
