@@ -219,3 +219,6 @@ mkdir -p $HOME/.zsh/completions
 
 # add the directory to the fpath
 fpath=($HOME/.zsh/completions $fpath)
+
+# == ADD GO TO PATH ===============================================
+export PATH=$PATH:/usr/local/go/bin
